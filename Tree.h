@@ -46,6 +46,8 @@ namespace rbt {
 			n_viz(0)
 			{}
 
+		~Tree<Key, Val>();
+
 		void insert(const Key&, const Val&);
 		Val* find(const Key&) const;
 		void remove(const Key&);
@@ -67,6 +69,8 @@ namespace rbt {
 		}
 
 	private:
+		void remove_node(Node<Key, Val> *n);
+
 		void rotate_left(Node<Key, Val> *);
 		void rotate_right(Node<Key, Val> *);
 
@@ -112,6 +116,26 @@ namespace rbt {
 	//	------------------------------------------------------------------------------
 	//	--------------------------- TREE FUNCITONS -----------------------------------
 	//	------------------------------------------------------------------------------
+
+	template<typename Key, typename Val>
+	Tree<Key, Val>::~Tree() {
+		if(root != &null) {
+			remove_node(root);
+		}
+	}
+
+	template<typename Key, typename Val>
+	void Tree<Key, Val>::remove_node(Node<Key, Val> *n) {
+		if(n->left != &null) {
+			remove_node(n->left);
+		}
+		if(n->right != &null) {
+			remove_node(n->right);
+		}
+
+		delete n;
+	}
+
 
 	template<typename Key, typename Val>
 	void Tree<Key, Val>::insert(const Key& key, const Val &val) {
