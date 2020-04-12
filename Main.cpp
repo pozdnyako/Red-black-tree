@@ -3,12 +3,9 @@
 
 #include <iostream>
 #include "Tree.h"
+#include <ctime>
 
 int main() {
-    rbt::testingVsMap();
-
-    return 0;
-
     rbt::Tree<int, int> tree;
 
     tree.insert(1, 0);
@@ -20,7 +17,10 @@ int main() {
     tree.insert(4, 0);
     tree.insert(6, 0);
     tree.insert(3, 0);
-    tree.insert(7, 0);
+    tree.insert(7, 5);
+
+    int *data = tree.find(7);
+    std::cout << "data: " << (*data) ;
 
     tree.remove(9);
     tree.remove(5);

@@ -47,7 +47,7 @@ namespace rbt {
 			{}
 
 		void insert(const Key&, const Val&);
-		const Val* find(const Key&) const;
+		Val* find(const Key&) const;
 		void remove(const Key&);
 
 		void printForGraphviz();
@@ -164,7 +164,7 @@ namespace rbt {
 	}
 
 	template<typename Key, typename Val>
-	const Val* Tree<Key, Val>::find(const Key& key) const {
+	Val* Tree<Key, Val>::find(const Key& key) const {
 		if(root == &null) { // tree is clr
 			return NULL;
 		}
