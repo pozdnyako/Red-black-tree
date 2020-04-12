@@ -16,14 +16,14 @@ int main() {
 }
 ```
 
-Function ```cpp rbt::Tree::runDotty()``` need in installed [Gravhviz](https://www.graphviz.org/).
-Function ```cpp testingVsMap``` need in installed [gnuplot](http://www.gnuplot.info/).
+Function ``` rbt::Tree::runDotty()``` need in installed [Gravhviz](https://www.graphviz.org/).
+Function ``` testingVsMap() ``` need in installed [gnuplot](http://www.gnuplot.info/).
 
 Сomparison rbt::Tree<int, int> with std::map<int,int> :
 ![i](insert)
 ![r](remove)
 ![f](find)
 
-[insert]: plot/insert.png "i"
-[remove]: plot/remove.png "r"
-[find]: plot/find.png "f"
+[insert]: https://github.com/pozdnyako/Red-black-tree/blob/master/plot/insert.png "i"
+[remove]: https://github.com/pozdnyako/Red-black-tree/blob/master/plot/remove.png "r"
+[find]: https://github.com/pozdnyako/Red-black-tree/blob/master/plot/find.png "f"
