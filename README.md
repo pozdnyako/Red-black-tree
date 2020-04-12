@@ -20,10 +20,6 @@ Function ``` rbt::Tree::runDotty()``` need in installed [Gravhviz](https://www.g
 Function ``` testingVsMap() ``` need in installed [gnuplot](http://www.gnuplot.info/).
 
 Сomparison rbt::Tree<int, int> with std::map<int,int> :
-![i](insert)
-![r](remove)
-![f](find)
-
-[insert]: https://raw.githubusercontent.com/pozdnyako/Red-black-tree/master/plot/insert.png "i"
-[remove]: https://raw.githubusercontent.com/pozdnyako/Red-black-tree/master/plot/remove.png "r"
-[find]: https://raw.githubusercontent.com/pozdnyako/Red-black-tree/master/plot/find.png "f"
+![insert](https://raw.githubusercontent.com/pozdnyako/Red-black-tree/master/plot/insert.png)
+![remove](https://raw.githubusercontent.com/pozdnyako/Red-black-tree/master/plot/remove.png)
+![find](https://raw.githubusercontent.com/pozdnyako/Red-black-tree/master/plot/find.png)
