@@ -24,6 +24,6 @@ Function ``` testingVsMap() ``` need in installed [gnuplot](http://www.gnuplot.i
 ![r](remove)
 ![f](find)
 
-[insert]: https://github.com/pozdnyako/Red-black-tree/blob/master/plot/insert.png "i"
-[remove]: https://github.com/pozdnyako/Red-black-tree/blob/master/plot/remove.png "r"
-[find]: https://github.com/pozdnyako/Red-black-tree/blob/master/plot/find.png "f"
+[insert]: https://raw.githubusercontent.com/pozdnyako/Red-black-tree/blob/master/plot/insert.png "i"
+[remove]: https://raw.githubusercontent.com/pozdnyako/Red-black-tree/blob/master/plot/remove.png "r"
+[find]: https://raw.githubusercontent.com/pozdnyako/Red-black-tree/blob/master/plot/find.png "f"
