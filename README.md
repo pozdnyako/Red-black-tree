@@ -1,7 +1,7 @@
 # Red-black tree
-Red-black tree realization in C++
+[Red-black tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) realization in C++.
 
-# Example:
+# Example
 ```cpp
 #include <iostream>
 #include "Tree.h"
@@ -20,6 +20,7 @@ Function ``` rbt::Tree::runDotty()``` need in installed [Gravhviz](https://www.g
 
 Function ``` testingVsMap() ``` need in installed [gnuplot](http://www.gnuplot.info/).
 
+# Performance
 Сomparison rbt::Tree<int, int> with std::map<int,int> realized at ``` testingVsMap() ```:
 ![insert](https://raw.githubusercontent.com/pozdnyako/Red-black-tree/master/plot/insert.png)
 ![remove](https://raw.githubusercontent.com/pozdnyako/Red-black-tree/master/plot/remove.png)
