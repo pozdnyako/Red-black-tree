@@ -19,6 +19,11 @@ int main() {
 Function ```cpp rbt::Tree::runDotty()``` need in installed [Gravhviz](https://www.graphviz.org/).
 Function ```cpp testingVsMap``` need in installed [gnuplot](http://www.gnuplot.info/).
 
+Сomparison rbt::Tree<int, int> with std::map<int,int> :
+[i][insert]
+[r][remove]
+[f][find]
+
 [insert]: plot/insert.png
 [remove]: plot/remove.png
 [find]: plot/find.png
