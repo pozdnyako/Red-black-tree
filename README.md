@@ -24,6 +24,6 @@ Function ```cpp testingVsMap``` need in installed [gnuplot](http://www.gnuplot.i
 ![r](remove)
 ![f](find)
 
-[insert]: plot/insert.png
-[remove]: plot/remove.png
-[find]: plot/find.png
+[insert]: https://github.com/pozdnyako/Red-black-tree/tree/master/plot/insert.png
+[remove]: https://github.com/pozdnyako/Red-black-tree/tree/master/plot/remove.png
+[find]: https://github.com/pozdnyako/Red-black-tree/tree/master/plot/find.png
