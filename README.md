@@ -5,13 +5,12 @@
 ```cpp
 #include <iostream>
 #include "Tree.h"
+
 int main() {
   rbt::Tree<int, int> tree;
   
-  tree.insert(4, 7);
-  
+  tree.insert(4, 7);  
   std::cout << "data at key 4:" << *(tree.find(4)) << std::endl;
-    
   tree.remove(4);
 }
 ```
