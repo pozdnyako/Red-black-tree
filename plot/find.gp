@@ -21,6 +21,6 @@ set style line 2 \
     linetype 1 linewidth 1 \
     pointtype 7 pointsize 0.5
 
+plot 'plot/outTree.dat' using 1:3 with linespoints linestyle 1 title 'rbt::Tree', \
+     'plot/outMap.dat' using 1:3 with linespoints linestyle 2 title 'std::map'
 
-plot 'plot/out.dat' using 1:4 with linespoints linestyle 1 title 'rbt::Tree', \
-     'plot/out.dat' using 1:5 with linespoints linestyle 2 title 'std::map'

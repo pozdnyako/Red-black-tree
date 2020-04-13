@@ -2,10 +2,14 @@
 //
 
 #include <iostream>
+#include "Tester.h"
 #include "Tree.h"
-#include <ctime>
 
 int main() {
+    testingRBTVsMap();
+
+    return 0;
+
     rbt::Tree<int, int> tree;
 
     tree.insert(1, 0);

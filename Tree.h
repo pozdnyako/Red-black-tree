@@ -6,13 +6,10 @@
 #include <filesystem>
 #include <string>
 #include <map>
-#include <chrono>
 
 namespace rbt {
 	const char RED = 0;
 	const char BLACK = 1;
-
-	void testingVsMap();
 
 	//	------------------------------------------------------------------------------
 	//	---------------------------       NODE     -----------------------------------
@@ -68,7 +65,10 @@ namespace rbt {
 			return os;
 		}
 
+		bool is_ok();
 	private:
+		int n_to_leaf(Node<Key, Val> *n);
+		
 		void remove_node(Node<Key, Val> *n);
 
 		void rotate_left(Node<Key, Val> *);
@@ -122,6 +122,51 @@ namespace rbt {
 		if(root != &null) {
 			remove_node(root);
 		}
+	}
+	
+	template<typename Key, typename Val>
+	int Tree<Key, Val>::n_to_leaf(Node<Key, Val> *n) {
+		if(n == &null)
+			return 0;
+
+		if(n->left == &null && n->right->color == BLACK && n->right != &null) {
+			std::cout << "1\n";
+			return -1;
+		}
+
+		if(n->right == &null && n->left->color == BLACK && n->left != &null) {
+			std::cout << "2\n";
+			return -1;
+		}
+
+		int n_left = n_to_leaf(n->left);
+		int n_right = n_to_leaf(n->right);
+
+		if(n_left != n_right) {
+			std::cout << "3\n";
+			return -1;
+		}
+
+		if(n_left == -1 || n_right == -1) {
+			std::cout << "4\n";
+			return -1;
+		}
+
+		if(n->color == BLACK) {
+			return n_left + 1;
+		}
+		else {
+			return n_left;
+		}
+	}
+
+	template<typename Key, typename Val>
+	bool Tree<Key, Val>::is_ok() {
+		if(root == &null)
+			return true;
+		
+		int res = n_to_leaf(root);
+		return (res != -1);
 	}
 
 	template<typename Key, typename Val>
@@ -257,6 +302,7 @@ namespace rbt {
 				N->left = cur->left;
 				N->right = cur->right;
 				N->par = cur->par;
+				N->color = cur->color;
 
 				if(cur->left != &null)
 					cur->left->par = N;
@@ -668,8 +714,8 @@ namespace rbt {
 		file2 << file1.rdbuf();
 		file2 << "}\n";
 
-		std::string command("dotty D:\\Users\\Admin\\Documents\\GitHub\\4-sem\\RB-Tree\\dot\\dot.txt");
-		//std::string command("type D:\\Users\\Admin\\Documents\\GitHub\\4-sem\\RB-Tree\\dot\\dot.txt | clip");
+		std::string command("dotty D:\\Users\\Admin\\Documents\\GitHub\\Red-black-tree\\dot\\dot.txt");
+		//std::string command("type D:\\Users\\Admin\\Documents\\GitHub\\Red-black-tree\\dot\\dot.txt | clip");
 		
 		system(command.c_str());
 
@@ -703,92 +749,4 @@ namespace rbt {
 
 		return os;
 	}
-
-	//	------------------------------------------------------------------------------
-	//	---------------------       TESTING VS STD::MAP      -------------------------
-	//	------------------------------------------------------------------------------
-
-	void testingVsMap() {
-		Tree<int, int> tree;
-		std::map<int, int> map;
-
-		std::ofstream fout("plot/out.dat", std::ios::binary);
-    
-		const int N_OP = 1000000;
-		const int n_points = 1000;
-
-		float tree_insert_time = 0.0f;
-		float tree_find_time = 0.0f;
-		float tree_remove_time = 0.0f;
-
-		float map_insert_time = 0.0f;
-		float map_find_time = 0.0f;
-		float map_remove_time = 0.0f;
-
-
-		for(int i = 0; i < N_OP; i++) {
-			int insert_key = rand();
-			int insert_val = rand();
-			int find_key = rand();
-			int remove_key = rand();
-
-
-			tree.insert(remove_key, insert_val);
-			map.insert({ remove_key, insert_val });
-
-			auto t_start = std::chrono::high_resolution_clock::now();
-			tree.insert(insert_key, insert_val);
-			auto t_end = std::chrono::high_resolution_clock::now();
-			tree_insert_time += std::chrono::duration<double, std::micro>(t_end-t_start).count();
-			
-			t_start = std::chrono::high_resolution_clock::now();
-			tree.find(find_key);
-			t_end = std::chrono::high_resolution_clock::now();
-			tree_find_time += std::chrono::duration<double, std::micro>(t_end-t_start).count();
-
-			t_start = std::chrono::high_resolution_clock::now();
-			map.insert({ insert_key, insert_val });
-			t_end = std::chrono::high_resolution_clock::now();
-			map_insert_time += std::chrono::duration<double, std::micro>(t_end-t_start).count();
-
-			t_start = std::chrono::high_resolution_clock::now();
-			map.find(find_key);
-			t_end = std::chrono::high_resolution_clock::now();
-			map_find_time += std::chrono::duration<double, std::micro>(t_end-t_start).count();
-
-			t_start = std::chrono::high_resolution_clock::now();
-			tree.remove(remove_key);
-			t_end = std::chrono::high_resolution_clock::now();
-			tree_remove_time += std::chrono::duration<double, std::micro>(t_end-t_start).count();
-
-			t_start = std::chrono::high_resolution_clock::now();
-			map.erase(remove_key);
-			t_end = std::chrono::high_resolution_clock::now();
-			map_remove_time += std::chrono::duration<double, std::micro>(t_end-t_start).count();
-
-			if(i % (N_OP/n_points) == 0) {
-				fout << i+1 << "\t" << tree_insert_time/(float)n_points << "\t" << map_insert_time/(float)n_points
-							<< "\t" << tree_find_time/(float)n_points << "\t" << map_find_time/(float)n_points
-							<< "\t" << tree_remove_time/(float)n_points << "\t" << map_remove_time/(float)n_points << "\n";
-
-				tree_insert_time = 0.0f;
-				map_insert_time = 0.0f;
-				tree_find_time = 0.0f;
-				map_find_time = 0.0f;
-				tree_remove_time = 0.0f;
-				map_remove_time = 0.0f;
-			}
-
-			if(i % (N_OP/100) == 0)
-				std::cout << (i+1) /(N_OP/100) << "%" << "\n";
-		}
-
-		fout.close();
-
-
-		system("gnuplot -p plot/insert.gp");
-		system("gnuplot -p plot/find.gp");
-		system("gnuplot -p plot/remove.gp");
-	}
-
 }

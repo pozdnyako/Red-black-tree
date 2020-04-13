@@ -9,7 +9,7 @@ set encoding utf8
 set xrange [100: 1000000]
 set logscale x
 
-set ytics 2
+set ytics 0.1
 
 set style line 1 \
     linecolor rgb '#0060ad' \
@@ -21,6 +21,5 @@ set style line 2 \
     linetype 1 linewidth 1 \
     pointtype 7 pointsize 0.5
 
-
-plot 'plot/out.dat' using 1:6 with linespoints linestyle 1 title 'rbt::Tree', \
-     'plot/out.dat' using 1:7 with linespoints linestyle 2 title 'std::map'
+plot 'plot/outTree.dat' using 1:4 with linespoints linestyle 1 title 'rbt::Tree', \
+     'plot/outMap.dat' using 1:4 with linespoints linestyle 2 title 'std::map'
