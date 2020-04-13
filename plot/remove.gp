@@ -9,8 +9,6 @@ set encoding utf8
 set xrange [100: 1000000]
 set logscale x
 
-set ytics 1
-
 set style line 1 \
     linecolor rgb '#0060ad' \
     linetype 1 linewidth 1 \
