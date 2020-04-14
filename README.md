@@ -25,4 +25,4 @@ Function ``` testingRBTVsMap() ``` need in installed [gnuplot](http://www.gnuplo
 ![remove](https://raw.githubusercontent.com/pozdnyako/Red-black-tree/master/plot/remove.png)
 ![find](https://raw.githubusercontent.com/pozdnyako/Red-black-tree/master/plot/find.png)
 
-Tests ran at Intel Core i7-7799HQ, 8Gb RAM
+Tests ran at Intel Core i7-7700HQ, 8Gb RAM
